@@ -1,0 +1,8 @@
+services:
+  flask-app:
+    build: .
+    container_name: my-devops-container
+    ports:
+      # Maps port 8080 on the EC2 server to port 8080 inside the container
+      - "8080:8080"
+    restart: always
