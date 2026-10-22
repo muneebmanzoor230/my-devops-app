@@ -37,6 +37,18 @@ pipeline {
                     """
                 }
             }
-        }
+         }
+
+        stage('Deploy to ECS') {
+            steps {
+                script {
+                    echo "Deploying to ECS Fargate..."
+                    sh """
+                    aws ecs update-service --cluster my-devops-cluster --service my-devops-service --force-new-deployment --region ${AWS_REGION}
+                    """
+                }
+            }
+        }   
+        
     }
 }
