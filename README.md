@@ -28,3 +28,8 @@ During the development of this pipeline, I encountered and resolved several indu
 1. **ALB Routing Conflicts (Instance vs. IP):** Transitioning from a manual EC2 deployment to ECS Fargate caused Load Balancer 502 errors. *Resolution:* Identified that Fargate uses `awsvpc` networking. Created a new Target Group utilizing `IP` routing instead of `Instance` routing and updated the ALB listener rules.
 2. **Container Caching Traps:** ECS failed to pull new UI updates despite successful Jenkins builds. *Resolution:* Identified that relying on the `:latest` Docker tag causes Fargate to use cached images. Terminated the old tasks to force a fresh pull, and learned the best practice of tagging images with unique Build IDs.
 3. **Jenkins Service Failures:** Jenkins crashed on startup due to system daemon loops. *Resolution:* Debugged Linux logs using `journalctl` and `systemctl`, identifying a deprecated Java 17 environment. Upgraded the EC2 instance to
+
+## 👨‍💻 Author
+**Muneeb Manzoor Sheikh**
+* Aspiring DevOps Engineer
+* Connect with me on LinkedIn  https://www.linkedin.com/in/muneeb-manzoor-65a153369/
